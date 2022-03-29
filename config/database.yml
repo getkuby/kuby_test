@@ -10,12 +10,8 @@
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 default: &default
-  adapter: mysql2
-  encoding: utf8mb4
+  adapter: cockroachdb
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -50,5 +46,3 @@ test:
 production:
   <<: *default
   database: kuby_test_production
-  username: kuby_test
-  password: <%= ENV['KUBY_TEST_DATABASE_PASSWORD'] %>
